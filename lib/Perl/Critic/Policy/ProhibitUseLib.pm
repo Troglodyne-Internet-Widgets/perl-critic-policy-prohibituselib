@@ -69,7 +69,7 @@ same thing by other means and goes unnoticed.
 =cut
 
 Readonly::Scalar my $DESC => q{'use lib' hardcodes a path};
-Readonly::Scalar my $EXPL => q{Use FindBin::libs instead, which finds the lib dir relative to the script};
+Readonly::Scalar my $EXPL => q{Use FindBin::libs (or other means to push to @INC) instead};
 
 =head2 METHODS
 
