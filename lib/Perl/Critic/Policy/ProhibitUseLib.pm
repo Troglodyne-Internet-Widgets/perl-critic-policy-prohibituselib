@@ -92,12 +92,14 @@ PPI::Statement::Include
 =cut
 
 sub supported_parameters {
-    return ({
-        name           => 'modules',
-        description    => 'Module names that hardcode a path onto @INC.',
-        default_string => 'lib lib::relative',
-        behavior       => 'string list',
-    });
+    return (
+        {
+            name           => 'modules',
+            description    => 'Module names that hardcode a path onto @INC.',
+            default_string => 'lib lib::relative',
+            behavior       => 'string list',
+        }
+    );
 }
 
 sub default_severity { return $SEVERITY_MEDIUM }

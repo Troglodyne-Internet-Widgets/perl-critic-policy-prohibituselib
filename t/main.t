@@ -58,10 +58,14 @@ is( violations(q{use lib '/opt/myapp/lib';  ## no critic (ProhibitUseLib)}), 0, 
         -severity        => 1,
     );
 
-    is( scalar $configured->critique( \"use strict;\nuse lib::abs '../lib';\n" ),
-        1, 'a configured module name is a violation' );
-    is( scalar $configured->critique( \"use strict;\nuse lib::relative '../lib';\n" ),
-        0, 'and one left out of the list is not' );
+    is(
+        scalar $configured->critique( \"use strict;\nuse lib::abs '../lib';\n" ),
+        1, 'a configured module name is a violation'
+    );
+    is(
+        scalar $configured->critique( \"use strict;\nuse lib::relative '../lib';\n" ),
+        0, 'and one left out of the list is not'
+    );
 }
 
 done_testing();
