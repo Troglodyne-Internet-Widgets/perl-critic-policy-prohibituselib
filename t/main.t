@@ -1,5 +1,5 @@
 use strict;
-use warnings;
+use warnings FATAL => 'all';
 
 use re '/aa';
 
@@ -8,7 +8,9 @@ use 5.014;
 use Test::More;
 
 use Perl::Critic;
-use Perl::Critic::Policy::ProhibitUseLib;
+use Perl::Critic::Policy::ProhibitUseLib ();
+
+is( Perl::Critic::Policy::ProhibitUseLib->applies_to(), 'PPI::Statement::Include', 'the policy looks at include statements' );
 
 # -profile => q{} because Perl::Critic otherwise walks up from cwd looking for
 # a .perlcriticrc, finds this dist's own, and runs every policy in it against
@@ -69,3 +71,5 @@ is( violations(q{use lib '/opt/myapp/lib';  ## no critic (ProhibitUseLib)}), 0, 
 }
 
 done_testing();
+
+1;
