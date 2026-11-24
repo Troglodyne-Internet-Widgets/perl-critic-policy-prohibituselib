@@ -3,7 +3,7 @@ package Perl::Critic::Policy::ProhibitUseLib;
 # ABSTRACT: Let the script find its own lib dir instead of spelling out a path.
 
 use strict;
-use warnings;
+use warnings FATAL => 'all';
 
 use 5.014;
 
@@ -116,6 +116,8 @@ C<no lib>, which removes a directory rather than adding one.
 
 sub violates {
     my ( $self, $elem, undef ) = @_;
+
+    no autovivification;
 
     # 'no lib' takes a directory back off @INC, which is not our business.
     return if $elem->type() ne 'use';
